@@ -22,18 +22,47 @@ export const getArtbyId = async (c:any)=>{
   }
 };
 
-export const createArt= async (c:any)=>{
+export const createArt = async (c: any) => {
   try {
-    const body = await c.req.json();
-  const {artname,artist,price,description}=body;
-  const art= await prisma.art.create({
-    data:{artname,artist,price,description: description || "art description"},
-  });
-  return c.json(art,201)
+    const formData = await c.req.formData();
+
+    console.log("FORMDATA:", [...formData.entries()]);
+
+    const artname = formData.get("artname");
+    const artist = formData.get("artist");
+    const price = Number(formData.get("price"));
+    const description =
+      (formData.get("description") as string) || "art description";
+
+    if (!artname || !artist || isNaN(price)) {
+      return c.json({ message: "Invalid fields" }, 400);
+    }
+
+    let imageUrl: string | null = null;
+    const file = formData.get("image");
+
+    if (file && typeof file === "object" && "arrayBuffer" in file) {
+      imageUrl = await saveImage(file);
+    }
+
+    const art = await prisma.art.create({
+      data: {
+        artname: artname as string,
+        artist: artist as string,
+        price,
+        description,
+        imageUrl,
+      },
+    });
+
+    return c.json(art, 201);
   } catch (error) {
-    console.error(error);
+    console.error("CREATE ART ERROR:", error);
+    return c.json({ error: String(error) }, 500);
   }
 };
+
+
 
 export const updateArt= async (c:any)=>{
   try {
@@ -68,20 +97,21 @@ export const uploadArtImage = async (c: any) => {
     const formData = await c.req.formData();
     const file = formData.get("image");
 
-    if (!file || !(file instanceof File)) {
+    // SAFE CHECK (NO instanceof File)
+    if (!file || typeof file !== "object" || !("arrayBuffer" in file)) {
       return c.json({ message: "Image file required" }, 400);
     }
 
     const imageUrl = await saveImage(file);
 
     const art = await prisma.art.update({
-      where: { id: parseInt(id) },
+      where: { id: Number(id) },
       data: { imageUrl },
     });
 
-    return c.json(art, 200);
+    return c.json(art);
   } catch (error) {
-    console.error(error);
+    console.error("UPLOAD ERROR:", error);
     return c.json({ message: "Image upload failed" }, 500);
   }
 };
