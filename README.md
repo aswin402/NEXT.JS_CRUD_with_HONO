@@ -59,10 +59,5 @@ its the entry point for the server
 required packages
 * bun add uuid
 
-we need to create uploads/ dir 
-then we need to wtite some codes on utils/upload.ts were it convert uploaded file into arrayBuffer then it will save to the disk and return the file path 
-later we need to write some logic codes on the controller 
-then finally we need to set the route 
-then way to go
-
+-> server ->readme.md for more details about server
 
