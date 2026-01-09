@@ -1,5 +1,10 @@
-import { ComponentExample } from "@/components/component-example";
+import Features from "@/components/Features";
+import Hero from "@/components/Hero";
 
 export default function Page() {
-return <ComponentExample />;
+return <>
+<Hero />
+<Features/>
+</>
+
 }

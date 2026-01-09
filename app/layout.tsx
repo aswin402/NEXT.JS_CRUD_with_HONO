@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from '../components/Navbar';
 import { ThemeProvider } from "@/components/theme-provider"
+import Footer from "@/components/Footer";
 
 const outfit = Outfit({subsets:['latin'],variable:'--font-sans'});
 
@@ -39,6 +40,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer/>
       </body>
       </ThemeProvider>
     </html>
