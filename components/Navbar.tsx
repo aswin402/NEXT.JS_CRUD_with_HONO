@@ -8,7 +8,7 @@ import { NavigationSheet } from './navigation-sheet';
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-2 inset-x-4 h-16 bg-background border max-w-(--breakpoint-xl) mx-auto rounded-full">
+   <nav className="fixed top-0 inset-x-4 z-50 h-16 bg-background border max-w-(--breakpoint-xl) mx-auto rounded-full">
       <div className="h-full flex items-center justify-between mx-auto px-4">
         <Logo />
 
