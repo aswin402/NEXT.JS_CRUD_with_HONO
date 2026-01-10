@@ -1,5 +1,7 @@
 "use client";
+import { PrinciplesSection } from "@/components/PrincipleSection";
 import Team from "@/components/teams";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, CirclePlay } from "lucide-react";
@@ -46,34 +48,12 @@ export default function AboutUs() {
 
     {/* Right */}
     <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-accent">
-      {/* Optional image / video later */}
+      <Image src="/features/img1.jpg" alt="ArtGallery" fill className="object-cover" />
     </div>
 
   </div>
 </div>
-    <section className="py-64">
-  <div className="mx-auto max-w-(--breakpoint-xl) px-6 grid md:grid-cols-2 gap-8">
-    
-    <div className="rounded-2xl border bg-muted/40 p-8">
-      <h3 className="text-2xl font-semibold">Our Mission</h3>
-      <p className="mt-4 text-muted-foreground">
-        To empower artists by providing a platform where creativity,
-        technology, and commerce seamlessly blend together.
-      </p>
-    </div>
-
-    <div className="rounded-2xl border bg-muted/40 p-8">
-      <h3 className="text-2xl font-semibold">Our Vision</h3>
-      <p className="mt-4 text-muted-foreground">
-        To become the most trusted digital art ecosystem where artists and
-        collectors thrive together globally.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
+    <PrinciplesSection />
     <Team />
     </>
   );
