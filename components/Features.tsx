@@ -1,44 +1,68 @@
 "use client";
+import Image from "next/image";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 const features = [
   {
-    title: "Identify Opportunities",
-    description: "Find untapped areas to explore effortlessly.",
+    title: "Explore New Arts",
+    description: "Find untapped creativity to explore effortlessly.",
+    image: "/features/img1.jpg",
   },
   {
-    title: "Build Authority",
-    description: "Craft content that resonates and inspires trust.",
+    title: "Upload Your Imagination",
+    description: "Craft content that resonates and inspires Arts.",
+    image: "/features/img2.jpg",
   },
   {
-    title: "Instant Insights",
-    description: "Get actionable insights instantly at a glance.",
+    title: "Buy & Sell",
+    description: "Buy arts, explore arts, sell arts.",
+    image: "/features/img3.jpg",
   },
 ];
 
+
 const Features = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-6">
-      <div className="grow w-full sm:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg)">
+    <section className="min-h-screen px-6 py-20">
+      <div className="mx-auto max-w-7xl">
         <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
           Ignite Your Imagination
         </h2>
-        <div className="w-full mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
-            <div
+            <Card
               key={feature.title}
-              className="flex flex-col text-start w-full"
+              className="mt-18 bg-muted/40 border-none shadow-none w-90 h-120 transition-transform duration-300 hover:-translate-y-2"
             >
-              <div className="mb-5 sm:mb-6 w-full aspect-4/5 bg-muted rounded-xl" />
-              <span className="text-2xl font-semibold tracking-[-0.015em]">
-                {feature.title}
-              </span>
-              <p className="mt-2 max-w-[25ch] text-muted-foreground text-[17px]">
-                {feature.description}
-              </p>
-            </div>
+              {/* Image */}
+              <div className="relative aspect-4/5 w-full overflow-hidden rounded-xl">
+                <Image
+                  src={feature.image}
+                  alt={feature.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              <CardHeader className="px-0 pt-6">
+                <CardTitle className="text-2xl font-semibold ml-4">
+                  {feature.title}
+                </CardTitle>
+                <CardDescription className="max-w-[25ch] text-base ml-4">
+                  {feature.description}
+                </CardDescription>
+              </CardHeader>
+            </Card>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

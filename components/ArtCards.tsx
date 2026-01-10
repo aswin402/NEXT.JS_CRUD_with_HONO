@@ -19,7 +19,7 @@ type ArtCardProps = {
 export default function ArtCard({ art }: ArtCardProps) {
   const imageSrc = art.imageUrl
     ? `${process.env.NEXT_PUBLIC_API_URL}${art.imageUrl}`
-    : "/placeholder.png";
+    : "/placeholder.jpg";
 
   return (
     <Link href={`/art/${art.id}`} className="group">

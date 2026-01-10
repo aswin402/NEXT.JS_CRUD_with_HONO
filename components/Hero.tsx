@@ -1,7 +1,7 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CirclePlay } from "lucide-react";
+import { ArrowUpRight, Brush, CirclePlay } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
@@ -30,9 +30,13 @@ export default function Hero() {
     <Button
     variant="outline"
     size="lg"
-    className="rounded-full px-6 py-6 text-base font-medium shadow-none"
+    className="rounded-full px-6 py-6 text-base font-medium shadow-none flex items-center gap-2"
+    asChild
     >
-    Learn More
+     <Link href="/arts">
+      <span>Explore</span>
+     <Brush className="h-5 w-5"/>
+    </Link>
   </Button>
 </div>
 
