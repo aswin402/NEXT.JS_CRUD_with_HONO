@@ -17,3 +17,17 @@ export async function getArtById(id: number) {
   if (!res.ok) throw new Error("Failed to fetch art");
   return res.json();
 }
+
+export const deleteArt = async (id: number) => {
+  const res = await fetch(`http://localhost:5000/art/${id}`, {
+    method: "DELETE",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+};

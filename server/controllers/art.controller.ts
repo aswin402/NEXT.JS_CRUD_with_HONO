@@ -64,32 +64,80 @@ export const createArt = async (c: any) => {
 
 
 
-export const updateArt= async (c:any)=>{
+export const updateArtById = async (c: any) => {
   try {
-    const {id}=c.req.param();
-  const body = await c.req.json();
-  const {artname,artist,price,description}=body;
-  const art= await prisma.art.update({
-    where:{id:parseInt(id)},
-    data:{artname,artist,price,description: description || "art description"},
-  });
-  return c.json(art,201)
+    const { id } = c.req.param();
+    const artId = parseInt(id);
+
+    if (isNaN(artId)) {
+      return c.json({ message: "Invalid art ID" }, 400);
+    }
+
+    const body = await c.req.json();
+    const { artname, artist, price } = body;
+
+    // check if art exists
+    const existingArt = await prisma.art.findUnique({
+      where: { id: artId },
+    });
+
+    if (!existingArt) {
+      return c.json({ message: "Art not found" }, 404);
+    }
+
+    const updatedArt = await prisma.art.update({
+      where: { id: artId },
+      data: {
+        artname,
+        artist,
+        price: Number(price),
+      },
+    });
+
+    return c.json(updatedArt, 200);
   } catch (error) {
     console.error(error);
+    return c.json({ message: "Failed to update art" }, 500);
   }
 };
 
-export const deleteArt= async (c:any)=>{
+
+export const deleteArt = async (c: any) => {
   try {
-    const {id}=c.req.param();
-  const art= await prisma.art.delete({
-    where:{id:parseInt(id)},
-  });
-  return c.json(art,201)
+    const { id } = c.req.param();
+    const artId = parseInt(id);
+
+    if (isNaN(artId)) {
+      return c.json({ message: "Invalid art ID" }, 400);
+    }
+
+    // Check if art exists
+    const art = await prisma.art.findUnique({
+      where: { id: artId },
+    });
+
+    if (!art) {
+      return c.json({ message: "Art not found" }, 404);
+    }
+
+    // Delete art
+    await prisma.art.delete({
+      where: { id: artId },
+    });
+
+    return c.json(
+      {
+        message: "Art deleted successfully",
+        id: artId,
+      },
+      200
+    );
   } catch (error) {
     console.error(error);
+    return c.json({ message: "Failed to delete art" }, 500);
   }
 };
+
 
 export const uploadArtImage = async (c: any) => {
   try {

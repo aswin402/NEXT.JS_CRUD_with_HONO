@@ -107,7 +107,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
-      <Card className="bg-background/60 backdrop-blur border">
+      <Card className="bg-background/60 backdrop-blur border w-100">
         <CardHeader>
           <CardTitle>Upload New Art</CardTitle>
         </CardHeader>
