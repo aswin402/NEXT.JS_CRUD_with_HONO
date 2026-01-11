@@ -5,13 +5,22 @@ export default async function ArtPage() {
   const arts = await getAllArts();
 
   return (
-    <section className="min-h-screen flex py-12 px-6">
-      <h1 className="text-3xl font-bold mb-6">Art Gallery</h1>
-      <div className="grid grid-cols-1 mt-20 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <>
+    <section className="min-h-screen flex items-center justify-center">
+      <div className="  grid 
+    grid-cols-1 
+    sm:grid-cols-2 
+    md:grid-cols-3 
+    lg:grid-cols-4 
+    xl:grid-cols-5
+    gap-x-8
+    gap-y-6
+    place-items-center">
         {arts.map((art: any) => (
           <ArtCard key={art.id} art={art} />
         ))}
       </div>
     </section>
+    </>
   );
 }

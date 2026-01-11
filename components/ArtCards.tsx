@@ -21,52 +21,57 @@ export default function ArtCard({ art }: ArtCardProps) {
     : "/placeholder.jpg";
 
   return (
-      <Card
-        className="
-          overflow-hidden 
-          bg-muted/30 
-          border border-border/40 
-          rounded-xl
-          transition-all duration-300
-          hover:-translate-y-1 hover:shadow-xl
-          w-80
-          h-100
-        "
-      >
-        {/* Image */}
-        <div className="relative aspect-3/4 overflow-hidden">
-       
-       <div className="relative aspect-3/4 overflow-hidden rounded-xl bg-muted ">
-    <Image
-    src={imageSrc}
-    alt={art.artname}
-    fill
-    className="object-cover"
-     sizes="(max-width: 768px) 100vw, 33vw (max-height: 768px)"
-    unoptimized={true}
-    />
-    </div>
+    <Card
+      className="
+        group
+        w-68
+        h-88
+        rounded-2xl
+        overflow-hidden
+        bg-background/60
+        border border-border/40
+        transition-all duration-300
+        hover:-translate-y-1 hover:shadow-lg
+      "
+    >
+      {/* IMAGE */}
+      <div className="relative aspect-1/12 overflow-hidden">
+        <Image
+          src={imageSrc}
+          alt={art.artname}
+          fill
+          className="
+            object-cover
+            transition-transform duration-300
+            group-hover:scale-105
+          "
+          unoptimized
+        />
 
+        {/* PRICE */}
+        <Badge
+          className="
+            absolute top-2 right-2
+            bg-black/70 text-white
+            text-xs px-2 py-0.5
+            rounded-full
+          "
+        >
+          ₹ {art.price}
+        </Badge>
+      </div>
 
-          {/* Price */}
-          <Badge className="absolute top-2 right-2 bg-black/70 text-white text-xs">
-            ₹ {art.price}
-          </Badge>
-        </div>
+      {/* INFO */}
+      <div className="p-3 space-y-1">
+        <h3 className="text-sm font-semibold truncate">
+          {art.artname}
+        </h3>
 
-        {/* Info */}
-        <div className="p-3 space-y-1">
-          <h3 className="text-sm font-semibold truncate">
-            {art.artname}
-          </h3>
-
-          <p className="text-xs text-muted-foreground truncate">
-            {art.artist}
-          </p>
-            <p className="text-xs text-muted-foreground truncate">
-            {art.description}
-          </p>
-        </div>
-      </Card>
+        <p className="text-xs text-muted-foreground truncate">
+          {art.artist}
+        </p>
+        
+      </div>
+    </Card>
   );
 }
