@@ -1,14 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import AlertSuccess, { DestructiveAlert } from "@/components/Alert";
+
 
 export default function UploadArtPage() {
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState<File | null>(null);
+  type AlertState =
+  | { type: "success"; id: number }
+  | { type: "error"; message: string }
+  | null;
+
+const [alert, setAlert] = useState<AlertState>(null);
+
+useEffect(() => {
+  if (alert) {
+    const timer = setTimeout(() => setAlert(null), 3000);
+    return () => clearTimeout(timer);
+  }
+}, [alert]);
+
+
 
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -83,7 +100,11 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const data = JSON.parse(responseText);
     console.log("✅ Success! Response data:", data);
 
-    alert(`✅ Art uploaded successfully!\nArt ID: ${data.data?.id || data.id}`);
+    setAlert({
+  type: "success",
+  id: data.data?.id || data.id,
+});
+
     form.reset();
     setImage(null);
 
@@ -95,9 +116,17 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     });
 
     if (err.name === "AbortError") {
-      alert("❌ Request timeout. Check if backend server is running.");
+      setAlert({
+  type: "error",
+  message: err.message || "server Error retry again",
+});
+
     } else {
-      alert(`❌ Upload failed: ${err.message || "Unknown error"}`);
+      setAlert({
+  type: "error",
+  message: err.message || "Upload failed",
+});
+
     }
   } finally {
     setLoading(false);
@@ -107,7 +136,27 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
-      <Card className="bg-background/60 backdrop-blur border w-100">
+
+ {alert && (
+  <div className="fixed bottom-6 right-6 z-50 w-360px animate-in fade-in slide-in-from-top-2">
+    {alert.type === "success" && (
+      <AlertSuccess
+        title="Art Uploaded Successfully"
+        description={`Art ID: ${alert.id}`}
+      />
+    )}
+
+    {alert.type === "error" && (
+      <DestructiveAlert
+        title="Upload Failed"
+        description={alert.message}
+      />
+    )}
+  </div>
+)}
+
+
+      <Card className="bg-background/60 backdrop-blur border w-100 mb-40">
         <CardHeader>
           <CardTitle>Upload New Art</CardTitle>
         </CardHeader>

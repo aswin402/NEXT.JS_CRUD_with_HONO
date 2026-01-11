@@ -34,14 +34,19 @@ export default function ArtCard({ art }: ArtCardProps) {
         "
       >
         {/* Image */}
-        <div className="relative aspect-[3/4] overflow-hidden">
-          <Image
-            src={imageSrc}
-            alt={art.artname}
-            fill
-            sizes="(max-width: 768px) 100vw, 25vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+        <div className="relative aspect-3/4 overflow-hidden">
+       
+       <div className="relative aspect-3/4 overflow-hidden rounded-xl bg-muted ">
+    <Image
+    src={imageSrc}
+    alt={art.artname}
+    fill
+    className="object-cover"
+     sizes="(max-width: 768px) 100vw, 33vw (max-height: 768px)"
+    unoptimized={true}
+    />
+    </div>
+
 
           {/* Price */}
           <Badge className="absolute top-2 right-2 bg-black/70 text-white text-xs">

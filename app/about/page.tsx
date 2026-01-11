@@ -4,7 +4,7 @@ import Team from "@/components/teams";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CirclePlay } from "lucide-react";
+import { ArrowUpRight, Brush, CirclePlay } from "lucide-react";
 import Link from "next/link";
 
 export default function AboutUs() {
@@ -31,18 +31,28 @@ export default function AboutUs() {
       </p>
 
       <div className="mt-10 flex items-center gap-4">
-        <Button size="lg" className="rounded-full">
-          Explore Arts <ArrowUpRight className="ml-1 h-5 w-5" />
-        </Button>
-
         <Button
-          variant="outline"
-          size="lg"
-          className="rounded-full shadow-none"
-        >
-          <CirclePlay className="mr-2 h-5 w-5" />
-          Watch Story
-        </Button>
+    size="lg"
+    className="rounded-full px-6 py-6 text-base font-medium flex items-center gap-2"
+    asChild
+  >
+    <Link href="/publishart">
+      <span>Get Started</span>
+      <ArrowUpRight className="h-5 w-5" />
+    </Link>
+  </Button>
+
+    <Button
+    variant="outline"
+    size="lg"
+    className="rounded-full px-6 py-6 text-base font-medium shadow-none flex items-center gap-2"
+    asChild
+    >
+     <Link href="/arts">
+      <span>Explore</span>
+     <Brush className="h-5 w-5"/>
+    </Link>
+  </Button>
       </div>
     </div>
 

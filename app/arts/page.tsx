@@ -1,7 +1,6 @@
 import ArtCard from "@/components/ArtCards";
 import { getAllArts } from "@/lib/api";
 
-
 export default async function ArtPage() {
   const arts = await getAllArts();
 
