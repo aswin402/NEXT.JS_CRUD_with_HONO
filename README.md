@@ -17,19 +17,19 @@ This application consumes a REST API to display, manage, and interact with art c
 ## Image
 
 * HOME
-[hero](/screenshots/hero.png)
+![hero](/screenshots/hero.png)
 
 * Arts
-[Arts](/screenshots/arts.png)
+![Arts](/screenshots/arts.png)
 
 * AboutPage
-[AboutPage](/screenshots/aboutPage.png)
+![AboutPage](/screenshots/aboutPage.png)
 
 * ContactUs
-[ContactUs](/screenshots/contactus.png)
+![ContactUs](/screenshots/contactus.png)
 
 * inventoryPage
-[inventoryPage](/screenshots/inventory.png)
+![inventoryPage](/screenshots/inventory.png)
 
 ## server-side
 
