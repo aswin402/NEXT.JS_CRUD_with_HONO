@@ -1,3 +1,5 @@
+import { Art } from "./types";
+
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getAllArts() {
@@ -19,7 +21,7 @@ export async function getArtById(id: number) {
 }
 
 export const deleteArt = async (id: number) => {
-  const res = await fetch(`http://localhost:5000/art/${id}`, {
+  const res = await fetch(`${API_URL}/art/${id}`, {
     method: "DELETE",
   });
 
@@ -30,4 +32,15 @@ export const deleteArt = async (id: number) => {
   }
 
   return data;
+};
+
+export const updateArt = async (art: Art) => {
+  const res = await fetch(`${API_URL}/art/${art.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(art),
+  });
+
+  if (!res.ok) throw new Error("Failed to update art");
+  return res.json();
 };

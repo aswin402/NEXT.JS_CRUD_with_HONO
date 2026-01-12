@@ -1,10 +1,8 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertSuccessProps, DestructiveAlertProps } from "@/lib/types";
 import { CircleCheckBigIcon,OctagonAlertIcon } from "lucide-react";
 
-type AlertSuccessProps = {
-  title?: string;
-  description?: string;
-};
+
 
 export default function AlertSuccess({
   title = "Operation Successful",
@@ -23,11 +21,6 @@ export default function AlertSuccess({
 
 
 
-
-type DestructiveAlertProps = {
-  title?: string;
-  description?: string;
-};
 
 export function DestructiveAlert({
   title = "Something Went Wrong",

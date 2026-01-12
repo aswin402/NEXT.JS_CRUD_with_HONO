@@ -10,8 +10,9 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import { Art } from "./types";
+
 import DeleteArtDialog from "./DeleteArtDialog";
+import { Art } from "@/lib/types";
 
 type Props = {
   arts: Art[];

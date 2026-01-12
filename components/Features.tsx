@@ -29,11 +29,10 @@ const features = [
 const Features = () => {
   return (
     <section className="min-h-screen px-6 py-20">
-      <div className="mx-auto max-w-7xl">
-        <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
+       <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-center">
           Ignite Your Imagination
         </h2>
-
+      <div className="mx-auto max-w-7xl flex items-center justify-center">
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <Card

@@ -10,8 +10,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Art } from "@/lib/types";
 
-import { Art } from "./types";
 
 type Props = {
   art: Art | null;

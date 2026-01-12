@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Art } from "@/components/inventory/types";
-
 import InventorySearch from "@/components/inventory/InventorySearch";
 import InventoryTable from "@/components/inventory/InventoryTable";
 import EditArtDialog from "@/components/inventory/EditArtDialog";
+import { Art } from "@/lib/types";
+import { getAllArts, deleteArt as deleteArtApi, updateArt as updateArtApi } from "@/lib/api";
+
 
 export default function InventoryPage() {
   const [arts, setArts] = useState<Art[]>([]);
@@ -13,37 +14,44 @@ export default function InventoryPage() {
   const [editArt, setEditArt] = useState<Art | null>(null);
   const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/art")
-      .then((res) => res.json())
-      .then(setArts);
-  }, []);
-
-  const deleteArt = async (id: number) => {
-    await fetch(`http://localhost:5000/art/${id}`, {
-      method: "DELETE",
-    });
-
-    setArts((prev) => prev.filter((a) => a.id !== id));
+ useEffect(() => {
+  const loadArts = async () => {
+    try {
+      const data = await getAllArts();
+      setArts(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const updateArt = async () => {
-    if (!editArt) return;
-    setSaving(true);
+  loadArts();
+}, []);
 
-    await fetch(`http://localhost:5000/art/${editArt.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(editArt),
-    });
+const deleteArt = async (id: number) => {
+  try {
+    await deleteArtApi(id);
+    setArts((prev) => prev.filter((a) => a.id !== id));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const updateArt = async () => {
+  if (!editArt) return;
+
+  setSaving(true);
+  try {
+    const updated = await updateArtApi(editArt);
 
     setArts((prev) =>
-      prev.map((a) => (a.id === editArt.id ? editArt : a))
+      prev.map((a) => (a.id === updated.id ? updated : a))
     );
-
-    setEditArt(null);
+  } finally {
     setSaving(false);
-  };
+    setEditArt(null);
+  }
+};
+
 
   const filteredArts = arts.filter(
     (a) =>

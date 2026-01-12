@@ -3,17 +3,8 @@
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ArtCardProps } from "@/lib/types";
 
-type ArtCardProps = {
-  art: {
-    id: number;
-    artname: string;
-    artist: string;
-    description?: string;
-    price: string;
-    imageUrl?: string;
-  };
-};
 
 export default function ArtCard({ art }: ArtCardProps) {
   const imageSrc = art.imageUrl
