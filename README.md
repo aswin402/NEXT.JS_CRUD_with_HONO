@@ -1,4 +1,7 @@
-# Example website for crud 
+# Art Gallery -Example website for crud 
+
+A modern, responsive Art Gallery frontend built using Next.js App, Tailwind CSS, and shadcn/ui.
+This application consumes a REST API to display, manage, and interact with art collections.
 
 ## used tech
 
@@ -10,6 +13,23 @@
 * tailwindcss
 * shadcin ui
 * ts
+
+## Image
+
+* HOME
+[hero](/screenshots/hero.png)
+
+* Arts
+[Arts](/screenshots/arts.png)
+
+* AboutPage
+[AboutPage](/screenshots/aboutPage.png)
+
+* ContactUs
+[ContactUs](/screenshots/contactus.png)
+
+* inventoryPage
+[inventoryPage](/screenshots/inventory.png)
 
 ## server-side
 
