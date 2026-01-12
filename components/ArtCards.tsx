@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArtCardProps } from "@/lib/types";
 
-
 export default function ArtCard({ art }: ArtCardProps) {
   const imageSrc = art.imageUrl
     ? `${process.env.NEXT_PUBLIC_API_URL}${art.imageUrl}`
@@ -15,6 +14,7 @@ export default function ArtCard({ art }: ArtCardProps) {
     <Card
       className="
         group
+        relative
         w-68
         h-88
         rounded-2xl
@@ -26,16 +26,20 @@ export default function ArtCard({ art }: ArtCardProps) {
       "
     >
       {/* IMAGE */}
-      <div className="relative aspect-1/12 overflow-hidden">
+      <div
+        className="
+          absolute
+          inset-0
+          z-10
+          transition-transform duration-300
+          group-hover:scale-105
+        "
+      >
         <Image
           src={imageSrc}
           alt={art.artname}
           fill
-          className="
-            object-cover
-            transition-transform duration-300
-            group-hover:scale-105
-          "
+          className="object-cover"
           unoptimized
         />
 
@@ -46,22 +50,35 @@ export default function ArtCard({ art }: ArtCardProps) {
             bg-black/70 text-white
             text-xs px-2 py-0.5
             rounded-full
+            z-20
           "
         >
           ₹ {art.price}
         </Badge>
       </div>
 
-      {/* INFO */}
-      <div className="p-3 space-y-1">
-        <h3 className="text-sm font-semibold truncate">
+      {/* INFO (hidden on hover) */}
+      <div
+        className="
+          relative
+          z-20
+          mt-68
+          p-3
+          space-y-1
+          inset-0 bg-black/70
+          transition-all duration-300
+          group-hover:opacity-0
+          group-hover:translate-y-4
+          pointer-events-none
+        "
+      >
+        <h3 className="text-sm font-semibold text-white truncate">
           {art.artname}
         </h3>
 
-        <p className="text-xs text-muted-foreground truncate">
+        <p className="text-xs text-white/80 truncate">
           {art.artist}
         </p>
-        
       </div>
     </Card>
   );
