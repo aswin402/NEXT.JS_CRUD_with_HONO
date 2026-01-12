@@ -35,6 +35,7 @@ its kinda hell torture but its really good experience tho.
 * artsCard we need to use that api function getArt for fetch all the arts data and show it on the frontend like from apiUrl we use like API_URL/art.data here we were using api from api.ts there we fetch data from the api and we have use art that is an type and .data means like art.imageUrl like that we will use
 
 -- InverntoyTable
-* for this i were used my whole brain to think about the logic for crud opperation on frontend  
+* for this i were used my whole brain to think about the logic for crud opperation on frontend  from the lib/api.ts were we defined the api logics and crud function we use that functions here for the operations
+
 
 
