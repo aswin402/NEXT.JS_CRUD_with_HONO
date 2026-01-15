@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "private": true,
+  "scripts": {
+    "server": "bun --bun server.ts",
+    "start": "bun --bun server.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

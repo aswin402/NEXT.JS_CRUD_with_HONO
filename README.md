@@ -221,3 +221,9 @@ http://localhost:5000
 
 
 
+next things need to do:
+
+* sign in and sign out page
+* Authentication
+* flutterApp
+* deployement

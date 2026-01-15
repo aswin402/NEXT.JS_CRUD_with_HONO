@@ -5,7 +5,7 @@ import artRouter from "./routes/art.route";
 const app = new Hono();
 
 app.use('*', cors({
-  origin: 'http://localhost:3000',
+  origin: '*',
   allowHeaders: ['*'],
   allowMethods: ['*'],
   exposeHeaders: ['*'],
@@ -25,3 +25,9 @@ export default {
   port: process.env.SERVER_PORT||5000,
   fetch: app.fetch
 }
+
+
+// [
+//     'http://localhost:3000',
+//     'http://localhost:46507',
+//     'http://127.0.0.1:46507',]
