@@ -1,8 +1,14 @@
 import { Art } from "./types";
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
+function getApiUrl() {
+  const url = process.env.NEXT_PUBLIC_API_URL;
+  if (!url) {
+    throw new Error("NEXT_PUBLIC_API_URL is not defined");
+  }
+  return url;
+}
 export async function getAllArts() {
+   const API_URL = getApiUrl();
   const res = await fetch(`${API_URL}/art`, {
     cache: "no-store",
   });
@@ -12,6 +18,7 @@ export async function getAllArts() {
 }
 
 export async function getArtById(id: number) {
+   const API_URL = getApiUrl();
   const res = await fetch(`${API_URL}/art/${id}`, {
     cache: "no-store",
   });
@@ -21,6 +28,7 @@ export async function getArtById(id: number) {
 }
 
 export const deleteArt = async (id: number) => {
+   const API_URL = getApiUrl();
   const res = await fetch(`${API_URL}/art/${id}`, {
     method: "DELETE",
   });
@@ -35,6 +43,7 @@ export const deleteArt = async (id: number) => {
 };
 
 export const updateArt = async (art: Art) => {
+   const API_URL = getApiUrl();
   const res = await fetch(`${API_URL}/art/${art.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },

@@ -231,3 +231,6 @@ next things need to do:
 
 server
  [servser](https://next-js-crud-with-hono.onrender.com/)
+
+ fontend web
+ [website](https://next-js-crud-with-hono.onrender.com/)
