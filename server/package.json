@@ -2,6 +2,7 @@
   "name": "server",
   "private": true,
   "scripts": {
+    "build": "echo 'no build step needed'",
     "server": "bun --bun server.ts",
     "start": "bun --bun server.ts"
   },
