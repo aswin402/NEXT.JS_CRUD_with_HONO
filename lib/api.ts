@@ -3,7 +3,7 @@ import { Art } from "./types";
 function getApiUrl() {
   const url = process.env.API_URL;
   if (!url) {
-    throw new Error("NEXT_PUBLIC_API_URL is not defined");
+    throw new Error("API_URL is not defined");
   }
   return url;
 }
