@@ -7,7 +7,7 @@ import { ArtCardProps } from "@/lib/types";
 
 export default function ArtCard({ art }: ArtCardProps) {
   const imageSrc = art.imageUrl
-    ? `${process.env.NEXT_PUBLIC_API_URL}${art.imageUrl}`
+    ? `${process.env.API_URL}${art.imageUrl}`
     : "/placeholder.jpg";
 
   return (
