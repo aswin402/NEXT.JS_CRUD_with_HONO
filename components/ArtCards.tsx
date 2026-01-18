@@ -19,7 +19,7 @@ export default function ArtCard({ art }: ArtCardProps) {
         h-88
         rounded-2xl
         overflow-hidden
-        bg-background/60
+        bg-card
         border border-border/40
         transition-all duration-300
         hover:-translate-y-1 hover:shadow-lg

@@ -37,7 +37,7 @@ const Features = () => {
           {features.map((feature) => (
             <Card
               key={feature.title}
-              className="mt-18 bg-muted/40 border-none shadow-none w-90 h-120 transition-transform duration-300 hover:-translate-y-2"
+              className="mt-18 bg-card border/40 border-none shadow-none w-90 h-120 transition-transform duration-300 hover:-translate-y-2"
             >
               {/* Image */}
               <div className="relative aspect-4/5 w-full overflow-hidden rounded-xl">

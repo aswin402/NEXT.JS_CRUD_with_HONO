@@ -60,7 +60,7 @@
   --foreground: oklch(0.17 0.015 260);
 
   /* Cards / popovers */
-  --card: oklch(1 0 0);
+  --card: oklch(91.207% 0.0109 286.048 / 0.281);
   --card-foreground: oklch(0.17 0.015 260);
 
   --popover: oklch(1 0 0);
