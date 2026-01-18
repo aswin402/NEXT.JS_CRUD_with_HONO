@@ -23,10 +23,7 @@ app.get("/", (c) => c.text(`server is running! port${process.env.PORT}`));
 
 export default {
   fetch: app.fetch,
+  port: process.env.PORT ||5000
 }
 
 
-// [
-//     'http://localhost:3000',
-//     'http://localhost:46507',
-//     'http://127.0.0.1:46507',]

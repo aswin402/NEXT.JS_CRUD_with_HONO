@@ -233,4 +233,4 @@ server
  [servser](https://next-js-crud-with-hono.onrender.com/)
 
  fontend web
- [website](https://next-js-crud-with-hono.onrender.com/)
+ [website](https://next-js-crud-with-hono.vercel.app/)

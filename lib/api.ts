@@ -1,7 +1,7 @@
 import { Art } from "./types";
 
 function getApiUrl() {
-  const url = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL;
+  const url = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "localhost:5000";
   if (!url) {
     throw new Error("API_URL is not defined");
   }
