@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
+import { Pencil } from "lucide-react";
 
 import DeleteArtDialog from "./DeleteArtDialog";
 import { Art } from "@/lib/types";
@@ -54,8 +55,10 @@ export default function InventoryTable({
                     size="sm"
                     variant="outline"
                     onClick={() => onEdit(art)}
+                    className="w-8 h-8 p-0 sm:w-auto sm:h-7 sm:px-2.5"
                   >
-                    Edit
+                    <Pencil className="size-4 sm:size-3.5 sm:mr-1" />
+                    <span className="hidden sm:inline">Edit</span>
                   </Button>
 
                   <DeleteArtDialog

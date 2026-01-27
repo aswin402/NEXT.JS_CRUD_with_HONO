@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import InventorySearch from "@/components/inventory/InventorySearch";
 import InventoryTable from "@/components/inventory/InventoryTable";
+import InventoryTableSkeleton from "@/components/inventory/InventoryTableSkeleton";
 import EditArtDialog from "@/components/inventory/EditArtDialog";
 import { Art } from "@/lib/types";
 import { getAllArts, deleteArt as deleteArtApi, updateArt as updateArtApi } from "@/lib/api";
@@ -13,6 +14,7 @@ export default function InventoryPage() {
   const [search, setSearch] = useState("");
   const [editArt, setEditArt] = useState<Art | null>(null);
   const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(true);
 
  useEffect(() => {
   const loadArts = async () => {
@@ -21,6 +23,8 @@ export default function InventoryPage() {
       setArts(data);
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,11 +69,15 @@ const updateArt = async () => {
 
       <InventorySearch search={search} setSearch={setSearch} />
 
-      <InventoryTable
-        arts={filteredArts}
-        onEdit={(art) => setEditArt({ ...art })}
-        onDelete={deleteArt}
-      />
+      {loading ? (
+        <InventoryTableSkeleton />
+      ) : (
+        <InventoryTable
+          arts={filteredArts}
+          onEdit={(art) => setEditArt({ ...art })}
+          onDelete={deleteArt}
+        />
+      )}
 
       <EditArtDialog
         art={editArt}

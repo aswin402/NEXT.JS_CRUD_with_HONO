@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,8 +27,10 @@ export default function DeleteArtDialog({ onDelete, setDeleteId }: Props) {
           size="sm"
           variant="destructive"
           onClick={setDeleteId}
+          className="w-8 h-8 p-0 sm:w-auto sm:h-7 sm:px-2.5"
         >
-          Delete
+          <Trash2 className="size-4 sm:size-3.5 sm:mr-1" />
+          <span className="hidden sm:inline">Delete</span>
         </Button>
       </AlertDialogTrigger>
 

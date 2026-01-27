@@ -42,7 +42,7 @@ export default function DustBackground() {
 
       // 🔥 SIZE DIFFERENCE HERE
       const size = isDark
-        ? Math.random() * 2 + 2      // ⭐ 2px – 4px (dark)
+        ? Math.random() * 1 + 2      // ⭐ 2px – 4px (dark)
         : Math.random() * 3 + 3;     // ⭐ 3px – 6px (light)
 
       const duration = Math.random() * 30 + 25;
